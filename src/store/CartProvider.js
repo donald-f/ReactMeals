@@ -3,18 +3,19 @@ import React, { useReducer } from 'react';
 
 const cartReducer = (state, action) => {
   switch (action.type) {
-    case 'add':
+    case 'ADD':
       const updatedItems = state.items.concat(action.item); // concat is a nifty way to keep things immutable (as opposed to using push())
+      // console.log(updatedItems);
       const updatedTotalAmount =
         state.totalAmount + action.item.price * action.item.amount;
       return {
         items: updatedItems,
         totalAmount: updatedTotalAmount,
       };
-    case 'remove':
-      return;
+    case 'REMOVE':
+      return state;
     default:
-      return;
+      return state;
   }
 };
 
